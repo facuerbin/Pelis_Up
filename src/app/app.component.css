@@ -4,34 +4,34 @@
 .green {
   background-color: #009054;
 }
-.aqua {
-  background-color: aquamarine;
-}
 .gray {
-  background-color: gray;
+  background-color: #6c757d;
 }
-.purple {
-  background-color: #5100ff;
+.blue {
+  background-color: #0d6efd;
 }
 .yellow {
-  background-color: yellow;
+  background-color: #ffc107;
 }
-.border {
-  border: 1px solid black;
+.section-box-1 {
+  background-color: #3c78d8;
 }
+.section-box-2 {
+  background-color: #ffd966;
+}
+
 .box {
   height: 20vh;
 }
-
-header{
+header {
   height: 25vh;
 }
-nav{
+nav {
   height: 20vh;
 }
-section{
-  height: 25vh;;
+section {
+  height: 25vh;
 }
-footer{
+footer {
   height: 25vh;
 }
