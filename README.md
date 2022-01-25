@@ -1,4 +1,9 @@
 # Desafio
+Proyecto realizado en el marco del curso Entrenamiento de Front End de Folcademy.
+Para ejecutar el proyecto, desde el directorio raiz ejecutar el comando npm install o yarn install. Luego con ng serve se iniciará el servidor en el puerto 4200. `http://localhost:4200/`.
+
+Autor: Facundo Erbin
+Bitbucket: https://facuerbin@bitbucket.org/facuerbin/desafio-git.git
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
