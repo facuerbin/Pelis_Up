@@ -1,15 +1,47 @@
 <header class="d-flex p-2 justify-content-center blue">
-  <nav class="col-10 gray"></nav>
+  <nav class="navbar">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a class="logo-container" href="#">
+        <img src="./../assets/logo.png" class="logo" alt="Logo del sitio" />
+      </a>
+
+      <ul class="d-flex flex-row align-items-center justify-content-between">
+        <li class="align-items-center">
+          <a href="" class="link-regular p-2 m-2"> Inicio </a>
+        </li>
+        <li class="align-items-center">
+          <a href="" class="link-regular p-2 m-2"> Peliculas </a>
+        </li>
+        <li class="align-items-center">
+          <a href="" class="link-regular p-2 m-2"> Series </a>
+        </li>
+        <li class="align-items-center">
+          <a href="" class="link-regular p-2 m-2">
+            Ingresar
+            <fa-icon
+              [icon]="arrowRight"
+              class="ml-1"
+              aria-hidden="true"
+            ></fa-icon>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>
 
-<section class="d-flex align-items-center justify-content-around green">
-  <div class="section-box-1 box col-5"></div>
-  <div class="section-box-1 box col-5"></div>
-</section>
-<section class="d-flex align-items-center justify-content-around red">
-  <div class="section-box-2 box col-3"></div>
-  <div class="section-box-2 box col-3"></div>
-  <div class="section-box-2 box col-3"></div>
-</section>
+<div class="container title-container d-flex">
+  <h1>PelisUP!</h1>
+  <h3>Plataforma para ver películas y series 😉</h3>
+  <input name="search" placeholder="Buscar películas y series" type="search" class="search">
+</div>
 
-<footer class="d-flex align-items-center yellow"></footer>
+
+<div class="background">
+  <div class="vector3"></div>
+  <div class="vector4"></div>
+  <div class="vector6"></div>
+  <div class="elipse5"></div>
+  <div class="elipse6"></div>
+  <div class="elipse8"></div>
+</div>
