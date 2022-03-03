@@ -1,0 +1,109 @@
+/*---------- Title Section ----------*/
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin-top: 160px;
+  height: 120px;
+}
+
+section.title-container {
+  height: auto;
+  margin-bottom: 24px;
+}
+
+.title-container h1 {
+  width: 247px;
+  height: 80px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 80px;
+  letter-spacing: -0.02em;
+  margin-bottom: 0px;
+
+  color: var(--grey50);
+}
+
+.title-container h3 {
+  height: 24px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: var(--grey300);
+
+  margin: 16px 0px;
+}
+
+.search {
+  background-color: var(--black20);
+  border-radius: 12px;
+  border: 1px solid var(--grey600);
+  color: var(--white100);
+  padding: 18px;
+  max-width: 344px;
+  width: 100%;
+  margin-bottom: 80px;
+
+  width: 344px;
+  height: 64px;
+}
+
+.section-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600 !important;
+  font-size: 32px !important;
+  line-height: 40px !important;
+  letter-spacing: -0.02em;
+
+  color: var(--grey400);
+}
+
+.filter-container {
+  padding: 8px;
+  background: var(--black20);
+  backdrop-filter: blur(80px);
+  border-radius: 12px;
+
+  width: 30vw;
+  height: 56px;
+}
+
+.filter-button {
+  padding: 8px 32px;
+}
+
+/*---------- Cards ----------*/
+.cards {
+  position: relative;
+  background: var(--black50);
+  color: var(--grey50);
+  border-radius: 12px;
+  padding: 8px;
+  margin: 12px 6px;
+  width: 256px;
+  height: 480px;
+  transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+
+  background: var(--grey700);
+  backdrop-filter: blur(80px);
+}
+
+.cards:hover {
+  background: var(--grey50);
+  color: var(--black50);
+}
+.cover-page {
+  width: 100%;
+  max-height: 360px;
+  border-radius: 8px;
+}

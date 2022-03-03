@@ -1,0 +1,31 @@
+/*---------- Navbar ----------*/
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between!;
+  align-items: end;
+  padding: 16px 120px;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+
+  background-color: var(--grey900);
+  backdrop-filter: blur(40px);
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 40px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}

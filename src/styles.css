@@ -104,3 +104,53 @@
   --white75: rgba(255, 255, 255, 0.75);
   --white100: rgba(255, 255, 255, 1);
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  min-height: 800px;
+}
+
+li {
+  list-style: none;
+}
+
+.link-regular {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-radius: 8px;
+
+  color: var(--grey200);
+}
+
+.body-regular {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--grey200);
+}
+
+.active,
+.link-regular:hover {
+  background-color: var(--primary400);
+  color: var(--primary50);
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}

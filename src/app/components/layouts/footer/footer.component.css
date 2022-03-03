@@ -1,0 +1,18 @@
+/*---------- Footer ----------*/
+footer {
+  z-index: 1;
+}
+
+.footer-link {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-radius: 8px;
+
+  color: var(--grey200);
+}
