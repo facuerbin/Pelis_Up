@@ -79,31 +79,3 @@ section.title-container {
 .filter-button {
   padding: 8px 32px;
 }
-
-/*---------- Cards ----------*/
-.cards {
-  position: relative;
-  background: var(--black50);
-  color: var(--grey50);
-  border-radius: 12px;
-  padding: 8px;
-  margin: 12px 6px;
-  width: 256px;
-  height: 480px;
-  transition: 0.25s ease-in-out;
-  transition: 0.25s ease-in-out;
-  cursor: pointer;
-
-  background: var(--grey700);
-  backdrop-filter: blur(80px);
-}
-
-.cards:hover {
-  background: var(--grey50);
-  color: var(--black50);
-}
-.cover-page {
-  width: 100%;
-  max-height: 360px;
-  border-radius: 8px;
-}

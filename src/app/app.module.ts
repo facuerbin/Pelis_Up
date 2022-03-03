@@ -1,28 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FooterComponent } from './components/layouts/footer/footer.component';
-import { HeaderComponent } from './components/layouts/header/header.component';
-import { BackgroundComponent } from './components/layouts/background/background.component';
 import { HomeComponent } from './components/routes/home/home.component';
+import { MoviesComponent } from './components/routes/movies/movies.component';
+import { SeriesComponent } from './components/routes/series/series.component';
+import { LoginComponent } from './components/routes/login/login.component';
+import { LayoutModule } from './components/layout/layout.module';
+import { SharedModule } from './components/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-    HeaderComponent,
-    BackgroundComponent,
-    HomeComponent
+    HomeComponent,
+    MoviesComponent,
+    SeriesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    RouterModule,
+    LayoutModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
