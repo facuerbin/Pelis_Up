@@ -47,12 +47,21 @@ section.title-container {
   border: 1px solid var(--grey600);
   color: var(--white100);
   padding: 18px;
+  padding-left: 50px;
   max-width: 344px;
   width: 100%;
   margin-bottom: 80px;
 
   width: 344px;
   height: 64px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  font-size: 1.5rem;
+  color: var(--grey600);
 }
 
 .section-title {

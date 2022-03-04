@@ -9,6 +9,7 @@ import { LoginComponent } from './components/routes/login/login.component';
 import { LayoutModule } from './components/layout/layout.module';
 import { SharedModule } from './components/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
     RouterModule,
     LayoutModule,
     SharedModule,

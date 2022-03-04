@@ -1,68 +1,12 @@
 <section
   class="container d-flex flex-row align-items-center justify-content-center flex-wrap mb-4"
 >
-  <div class="cards col-lg-3 col-md-4 col-12">
+  <div *ngFor="let item of catalog" class="cards col-lg-3 col-md-4 col-12">
     <img
       class="cover-page"
-      src="./../assets/portadas/img1.png"
+      src="{{'https://image.tmdb.org/t/p/w500/' + item.image + '?api_key=8fb83c35cf1bf0d66a0a7a06e75482a9'}}"
       alt="Imagen de portada"
     />
-    <p>Black Widow</p>
-  </div>
-  <div class="cards col-lg-3 col-md-4 col-12">
-    <img
-      class="cover-page"
-      src="./../assets/portadas/img2.png"
-      alt="Imagen de portada"
-    />
-    <p>Shang Chi</p>
-  </div>
-  <div class="cards col-lg-3 col-md-4 col-12">
-    <img
-      class="cover-page"
-      src="./../assets/portadas/img3.png"
-      alt="Imagen de portada"
-    />
-    <p>Loki</p>
-  </div>
-  <div class="cards col-lg-3 col-md-4 col-12">
-    <img
-      class="cover-page"
-      src="./../assets/portadas/img4.png"
-      alt="Imagen de portada"
-    />
-    <p>How I Met Your Mother</p>
-  </div>
-  <div class="cards col-lg-3 col-md-4 col-12">
-    <img
-      class="cover-page"
-      src="./../assets/portadas/img5.png"
-      alt="Imagen de portada"
-    />
-    <p>Money Heist</p>
-  </div>
-  <div class="cards col-lg-3 col-md-4 col-12">
-    <img
-      class="cover-page"
-      src="./../assets/portadas/img6.png"
-      alt="Imagen de portada"
-    />
-    <p>Friends</p>
-  </div>
-  <div class="cards col-lg-3 col-md-4 col-12">
-    <img
-      class="cover-page"
-      src="./../assets/portadas/img7.png"
-      alt="Imagen de portada"
-    />
-    <p>The Big Bang Theory</p>
-  </div>
-  <div class="cards col-lg-3 col-md-4 col-12">
-    <img
-      class="cover-page"
-      src="./../assets/portadas/img8.png"
-      alt="Imagen de portada"
-    />
-    <p>Two and a Half Men</p>
+    <p class="title">{{item.name}}</p>
   </div>
 </section>

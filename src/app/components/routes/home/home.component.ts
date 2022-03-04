@@ -1,30 +1,84 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
+import { Category, MovieSeries } from 'src/interfaces/movie.series';
+import movies from 'src/app/movies.json';
+import series from 'src/app/series.json';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  movies_series: MovieSeries[] | undefined;
+  catalog: MovieSeries[] | undefined;
 
   // Icons
   searchIcon = faSearch;
 
-  isActive = 1;
-  sections = ["Todos", "Películas", "Series"];
+  filter = 1;
+  activeFilter = ["Todos", "Películas", "Series"]
 
-  buttonActive (id : number) {
-    this.isActive = id;
-    console.log("it works")
+  constructor() { }
+
+  ngOnInit(): void {
+    this.setMovieSeries();
+    this.catalog = this.movies_series;
+  }
+
+  filterHandler(id: number) {
+    this.filter = id;
+    this.catalog = this.filterCatalog(this.getActiveSection());
+
     return true;
   }
 
-  getActiveSection () {
-    return this.sections[this.isActive - 1];
+  filterCatalog(filter: string) {
+    let catalog: MovieSeries[] | undefined;
+
+    switch (filter) {
+      case "Películas":
+        catalog = this.movies_series?.filter(element => {
+          return element.category === Category.MOVIE
+        });
+        break;
+      case "Series":
+        catalog = this.movies_series?.filter(element => {
+          return element.category === Category.SERIES
+        });
+        break;
+      default:
+        catalog = this.movies_series;
+        break;
+    }
+
+    return catalog
+  }
+
+  setMovieSeries(): void {
+    this.movies_series = movies.map(movie => {
+      return {
+        id: movie.id,
+        name: movie.title,
+        description: movie.overview,
+        image: movie.poster_path,
+        rating: movie.vote_average,
+        category: Category.MOVIE
+      }
+    }).concat(
+      series.map(tvShow => {
+        return {
+          id: tvShow.id,
+          name: tvShow.name,
+          description: tvShow.overview,
+          image: tvShow.poster_path,
+          rating: tvShow.vote_average,
+          category: Category.SERIES
+        }
+      })
+    );
+  }
+
+  getActiveSection() {
+    return this.activeFilter[this.filter - 1];
   }
 }
