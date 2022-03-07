@@ -4,19 +4,7 @@
     <h3>Plataforma para ver películas y series 😉</h3>
   </div>
 
-  <div class="d-flex position-relative">
-    <fa-icon
-      [icon]="searchIcon"
-      class="search-icon"
-      aria-hidden="true"
-    ></fa-icon>
-    <input
-      name="search"
-      placeholder="Buscar películas y series"
-      type="search"
-      class="search"
-    />
-  </div>
+  <app-search (searchEvent)="searchCatalog($event)"></app-search>
 
   <div
     class="d-flex filter-container align-items-center justify-content-around mb-4"
@@ -48,11 +36,10 @@
 
   <div class="container d-flex">
     <h3 class="section-title">
-      {{ getActiveSection() }} <span class="body-regular">({{catalog?.length}})</span>
+      {{ getActiveSection() }}
+      <span class="body-regular">({{ catalog?.length }})</span>
     </h3>
   </div>
 </section>
 
-<app-cards
-  [catalog]="catalog"
-></app-cards>
+<app-cards [catalog]="catalog"></app-cards>

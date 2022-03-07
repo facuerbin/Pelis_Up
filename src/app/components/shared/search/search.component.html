@@ -1,0 +1,15 @@
+<div class="d-flex position-relative">
+  <fa-icon
+    [icon]="searchIcon"
+    class="search-icon"
+    aria-hidden="true"
+  ></fa-icon>
+  <input
+    name="search"
+    placeholder="Buscar películas y series"
+    type="search"
+    class="search"
+    [(ngModel)]="search"
+    (ngModelChange) = "filterSearch()"
+  />
+</div>

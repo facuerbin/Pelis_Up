@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './components/routes/home/home.component';
-import { MoviesComponent } from './components/routes/movies/movies.component';
-import { SeriesComponent } from './components/routes/series/series.component';
+import { ListComponent } from './components/routes/list/list.component';
 import { LoginComponent } from './components/routes/login/login.component';
 import { LayoutModule } from './components/layout/layout.module';
 import { SharedModule } from './components/shared/shared.module';
@@ -15,8 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     AppComponent,
     HomeComponent,
-    MoviesComponent,
-    SeriesComponent,
+    ListComponent,
     LoginComponent
   ],
   imports: [
@@ -25,7 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     RouterModule,
     LayoutModule,
-    SharedModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

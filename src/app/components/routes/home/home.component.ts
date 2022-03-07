@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   searchIcon = faSearch;
 
   filter = 1;
-  activeFilter = ["Todos", "Películas", "Series"]
+  activeFilter = [Category.ANY, Category.MOVIE, Category.SERIES]
 
   constructor() { }
 
@@ -52,6 +52,13 @@ export class HomeComponent implements OnInit {
     }
 
     return catalog
+  }
+
+  searchCatalog(searchEvent: string): void {
+    this.catalog = this.movies_series?.filter(item => {
+      return item.name.toLowerCase().includes(searchEvent.toLowerCase()) &&
+        (item.category === this.getActiveSection() || this.getActiveSection() === Category.ANY);
+    })
   }
 
   setMovieSeries(): void {

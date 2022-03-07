@@ -8,7 +8,7 @@ export interface MovieSeries {
 }
 
 export enum Category {
-  SERIES = "Serie",
-  MOVIE = "Película",
+  SERIES = "Series",
+  MOVIE = "Películas",
   ANY = "Todos"
 }

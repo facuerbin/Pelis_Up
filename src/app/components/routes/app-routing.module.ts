@@ -2,15 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { MoviesComponent } from './movies/movies.component';
-import { SeriesComponent } from './series/series.component';
+import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
   {
-    path: "peliculas", component:MoviesComponent
+    path: "peliculas", component:ListComponent
   },
   {
-    path: "series", component:SeriesComponent
+    path: "series", component:ListComponent
   },
   {
     path: "login", component:LoginComponent

@@ -1,19 +1,19 @@
 /*---------- Title Section ----------*/
-.title-container {
+.list-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
-  margin-top: 160px;
+  margin-top: 144px;
   height: 120px;
 }
 
-section.title-container {
+section.list-container {
   height: auto;
   margin-bottom: 24px;
 }
 
-.title-container h1 {
+.list-container h1 {
   width: 247px;
   height: 80px;
 
@@ -28,7 +28,7 @@ section.title-container {
   color: var(--grey50);
 }
 
-.title-container h3 {
+.list-container h3 {
   height: 24px;
   font-family: "Poppins";
   font-style: normal;
@@ -37,31 +37,4 @@ section.title-container {
   line-height: 24px;
 
   color: var(--grey300);
-
-  margin: 16px 0px;
-}
-
-.section-title {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600 !important;
-  font-size: 32px !important;
-  line-height: 40px !important;
-  letter-spacing: -0.02em;
-
-  color: var(--grey400);
-}
-
-.filter-container {
-  padding: 8px;
-  background: var(--black20);
-  backdrop-filter: blur(80px);
-  border-radius: 12px;
-
-  width: 30vw;
-  height: 56px;
-}
-
-.filter-button {
-  padding: 8px 32px;
 }
