@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Category, MovieSeries } from 'src/interfaces/movie.series';
-import movies from 'src/app/movies.json';
-import series from 'src/app/series.json';
 import { MoviesService } from 'src/app/services/movies.service';
 @Component({
   selector: 'app-home',

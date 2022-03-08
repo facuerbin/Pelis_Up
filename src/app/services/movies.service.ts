@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import config from 'src/config';
 import axios from 'axios';
 import { Category, MovieSeries } from 'src/interfaces/movie.series';
-import { Trending } from 'src/interfaces/trending.dto';
+import { Trending } from 'src/interfaces/get.trending.dto';
 import { GetMovies } from 'src/interfaces/get.movies.dto';
 import { GetSeries } from 'src/interfaces/get.series.dto';
 
