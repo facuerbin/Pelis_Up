@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Category, MovieSeries } from 'src/interfaces/movie.series';
 import movies from 'src/app/movies.json';
 import series from 'src/app/series.json';
+import { MoviesService } from 'src/app/services/movies.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,79 +11,45 @@ import series from 'src/app/series.json';
 export class HomeComponent implements OnInit {
   movies_series: MovieSeries[] | undefined;
   catalog: MovieSeries[] | undefined;
-
-  // Icons
-  searchIcon = faSearch;
+  movieService = new MoviesService();
 
   filter = 1;
-  activeFilter = [Category.ANY, Category.MOVIE, Category.SERIES]
+  activeFilter = [Category.ANY, Category.MOVIE, Category.SERIES];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.setMovieSeries();
-    this.catalog = this.movies_series;
+    this.filterCatalog(this.getActiveSection());
   }
 
   filterHandler(id: number) {
     this.filter = id;
-    this.catalog = this.filterCatalog(this.getActiveSection());
-
-    return true;
+    this.filterCatalog(this.getActiveSection());
   }
 
-  filterCatalog(filter: string) {
-    let catalog: MovieSeries[] | undefined;
-
+  async filterCatalog(filter: string) {
     switch (filter) {
       case "Películas":
-        catalog = this.movies_series?.filter(element => {
-          return element.category === Category.MOVIE
-        });
+        this.movies_series = await this.movieService.getMovies();
         break;
       case "Series":
-        catalog = this.movies_series?.filter(element => {
-          return element.category === Category.SERIES
-        });
+        this.movies_series = await this.movieService.getSeries();
         break;
       default:
-        catalog = this.movies_series;
+        this.movies_series = await this.movieService.getTrending();
         break;
     }
 
-    return catalog
+    return this.catalog = this.movies_series;
   }
 
   searchCatalog(searchEvent: string): void {
     this.catalog = this.movies_series?.filter(item => {
-      return item.name.toLowerCase().includes(searchEvent.toLowerCase()) &&
+      return item.name?.toLowerCase().includes(searchEvent.toLowerCase()) &&
         (item.category === this.getActiveSection() || this.getActiveSection() === Category.ANY);
-    })
+    });
   }
 
-  setMovieSeries(): void {
-    this.movies_series = movies.map(movie => {
-      return {
-        id: movie.id,
-        name: movie.title,
-        description: movie.overview,
-        image: movie.poster_path,
-        rating: movie.vote_average,
-        category: Category.MOVIE
-      }
-    }).concat(
-      series.map(tvShow => {
-        return {
-          id: tvShow.id,
-          name: tvShow.name,
-          description: tvShow.overview,
-          image: tvShow.poster_path,
-          rating: tvShow.vote_average,
-          category: Category.SERIES
-        }
-      })
-    );
-  }
 
   getActiveSection() {
     return this.activeFilter[this.filter - 1];
