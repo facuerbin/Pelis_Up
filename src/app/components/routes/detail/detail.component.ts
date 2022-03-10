@@ -28,8 +28,8 @@ export class DetailComponent implements OnInit {
         this.movieService.getSeriesById((params['id']))
           .then(result => {
             this.item = result
-            this.bannerImage = `https://image.tmdb.org/t/p/w500/${this.item.backdrop_path}?api_key=${config.apiKey}}`;
-            this.posterImage = `https://image.tmdb.org/t/p/w500/${this.item.poster_path}?api_key=${config.apiKey}}`;
+            this.bannerImage = `https://image.tmdb.org/t/p/w780/${this.item.backdrop_path}?api_key=${config.apiKey}}`;
+            this.posterImage = `https://image.tmdb.org/t/p/w780/${this.item.poster_path}?api_key=${config.apiKey}}`;
           })
           .catch(e => {
             console.log(e)
@@ -40,8 +40,8 @@ export class DetailComponent implements OnInit {
         this.movieService.getMoviesById((params['id']))
           .then(result => {
             this.item = result
-            this.bannerImage = `https://image.tmdb.org/t/p/w500/${this.item.backdrop_path}?api_key=${config.apiKey}}`;
-            this.posterImage = `https://image.tmdb.org/t/p/w500/${this.item.poster_path}?api_key=${config.apiKey}}`;
+            this.bannerImage = `https://image.tmdb.org/t/p/w780/${this.item.backdrop_path}?api_key=${config.apiKey}}`;
+            this.posterImage = `https://image.tmdb.org/t/p/w780/${this.item.poster_path}?api_key=${config.apiKey}}`;
           })
           .catch(e => {
             console.log(e)
