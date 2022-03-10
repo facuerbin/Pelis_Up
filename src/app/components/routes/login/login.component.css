@@ -1,0 +1,11 @@
+.image-container {
+  height: 560px;
+
+  background: var(--grey900);
+  border-radius: 36px;
+  background-image: url("./../../../../assets/login.png");
+}
+
+.container {
+  margin-top: 116px;
+}

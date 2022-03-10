@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category, MovieSeries } from 'src/interfaces/movie.series';
 
 @Component({
@@ -7,10 +8,10 @@ import { Category, MovieSeries } from 'src/interfaces/movie.series';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-
   @Input() catalog: MovieSeries[] | undefined;
 
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

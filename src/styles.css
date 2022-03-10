@@ -1,4 +1,3 @@
-
 :root {
   /* Primary */
   --primary50: #ebe9fe;
@@ -140,6 +139,37 @@ li {
   font-size: 16px;
   line-height: 24px;
   color: var(--grey200);
+}
+
+.body-extra-small {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--primary200);
+}
+
+.heading-h3 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+
+  color: var(--grey50);
+}
+
+.heading-h4 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.015em;
+
+  color: var(--grey50);
 }
 
 .active,

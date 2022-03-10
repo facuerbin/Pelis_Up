@@ -2,11 +2,17 @@
   class="container d-flex flex-row align-items-center justify-content-center flex-wrap mb-4"
 >
   <div *ngFor="let item of catalog" class="cards col-lg-3 col-md-4 col-12">
-    <img
-      class="cover-page"
-      src="{{'https://image.tmdb.org/t/p/w500/' + item.image + '?api_key=8fb83c35cf1bf0d66a0a7a06e75482a9'}}"
-      alt="Imagen de portada"
-    />
-    <p class="title">{{item.name}}</p>
+    <a [routerLink]="['/',(item.category === 'Películas'?'peliculas': 'series') , item.id]">
+      <img
+        class="cover-page"
+        src="{{
+          'https://image.tmdb.org/t/p/w500/' +
+            item.image +
+            '?api_key=8fb83c35cf1bf0d66a0a7a06e75482a9'
+        }}"
+        alt="Imagen de portada"
+      />
+      <p class="title">{{ item.name }}</p>
+    </a>
   </div>
 </section>

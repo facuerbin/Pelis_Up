@@ -9,13 +9,15 @@ import { LayoutModule } from './components/layout/layout.module';
 import { SharedModule } from './components/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DetailComponent } from './components/routes/detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ListComponent,
-    LoginComponent
+    LoginComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

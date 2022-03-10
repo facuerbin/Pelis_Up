@@ -1,0 +1,73 @@
+.container {
+  margin-top: 120px;
+  margin-bottom: 100px;
+}
+
+.banner {
+  position: relative;
+  width: 1200px;
+  height: 480px;
+  margin-bottom: 152px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(54, 44, 146, 0.4) 0%,
+    rgba(18, 98, 151, 0.4) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 40px;
+}
+
+.banner-title {
+  position: absolute;
+  left: 70px;
+  top: 400px;
+  width: 560px;
+  height: 144px;
+  padding-top: 40px;
+  padding-left: 40px;
+
+  background: rgba(32, 40, 62, 0.8);
+  backdrop-filter: blur(24px);
+
+  border-radius: 24px;
+}
+
+.poster {
+  width: 480px;
+  height: 720px;
+  border-radius: 24px;
+}
+
+.details {
+  width: 480px;
+  height: 680px;
+}
+
+.row {
+  margin-top: 72px;
+}
+
+h4 {
+  margin-bottom: 24px;
+}
+
+p {
+  margin-bottom: 8px;
+}
+
+.atribute-container {
+  margin-bottom: 24px;
+}
+.gray-100 {
+  color: var(--grey100);
+}
+
+.gray-300 {
+  color: var(--grey300);
+}
+
+.gray-400 {
+  color: var(--grey400);
+}

@@ -1,0 +1,91 @@
+<section class="container align-items-center justify-content-center">
+  <div class="row">
+    <div
+      class="banner col-12"
+      style="
+        background-image: url( '{{ bannerImage }}');
+      "
+    >
+      <div class="banner-title">
+        <span class="body-extra-small">MaileHereko / {{ category }}</span>
+        <p class="heading-h3">{{ item?.name }}</p>
+      </div>
+    </div>
+
+    <div class="col-6 d-flex justify-content-center">
+      <img src="{{ posterImage }}" class="poster" alt="Banner image" />
+    </div>
+
+    <div class="details col-6">
+      <h4 class="heading-h4">{{ item?.tagline }}</h4>
+      <p class="body-large gray-300">{{ item?.overview }}</p>
+
+      <div class="row justify-content-center" *ngIf="category === 'Series'">
+        <div class="col-6">
+          <div class="atribute-container">
+            <p class="body-regular gray-400">Type</p>
+            <p class="body-large gray-100">Tv</p>
+          </div>
+
+          <div class="atribute-container">
+            <p class="body-regular gray-400">First air date</p>
+            <p class="body-large gray-100">{{ item?.first_air_date }}</p>
+          </div>
+
+          <div class="atribute-container">
+            <p class="body-regular gray-400">No. of seasons</p>
+            <p class="body-large gray-100">{{ item?.number_of_seasons }}</p>
+          </div>
+
+          <div class="atribute-container">
+            <p class="body-regular gray-400">Episode run time</p>
+            <p class="body-large gray-100">{{ item?.episode_run_time }} min</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="atribute-container">
+            <p class="body-regular gray-400">Status</p>
+            <p class="body-large gray-100">{{ item?.status }}</p>
+          </div>
+
+          <div class="atribute-container">
+            <p class="body-regular gray-400">Last air date</p>
+            <p class="body-large gray-100">{{ item?.last_air_date }}</p>
+          </div>
+
+          <div class="atribute-container">
+            <p class="body-regular gray-400">No. of episode</p>
+            <p class="body-large gray-100">{{ item?.number_of_episodes }}</p>
+          </div>
+        </div>
+        <div class="atribute-container">
+          <p class="body-regular gray-400">Gernes</p>
+          <p class="body-large gray-100">{{ item?.genres?.toString() }}</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center" *ngIf="category === 'Películas'">
+        <div class="col-12">
+          <div class="atribute-container">
+            <p class="body-regular gray-400">Type</p>
+            <p class="body-large gray-100">Movie</p>
+          </div>
+
+          <div class="atribute-container">
+            <p class="body-regular gray-400">Release date</p>
+            <p class="body-large gray-100">{{item?.release_date}}</p>
+          </div>
+
+          <div class="atribute-container">
+            <p class="body-regular gray-400">Run time</p>
+            <p class="body-large gray-100">{{ item?.runtime }} min</p>
+          </div>
+          <div class="atribute-container">
+            <p class="body-regular gray-400">Gernes</p>
+            <p class="body-large gray-100">{{ item?.genres?.toString() }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
