@@ -150,6 +150,16 @@ li {
   color: var(--primary200);
 }
 
+.heading-h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 80px;
+  letter-spacing: -0.02em;
+  color: var(--grey100);
+}
+
 .heading-h3 {
   font-family: "Poppins";
   font-style: normal;

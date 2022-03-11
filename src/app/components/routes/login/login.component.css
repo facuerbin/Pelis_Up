@@ -1,11 +1,73 @@
 .image-container {
-  height: 560px;
-
   background: var(--grey900);
   border-radius: 36px;
-  background-image: url("./../../../../assets/login.png");
+}
+
+img {
+  z-index: 1;
 }
 
 .container {
   margin-top: 116px;
+  margin-bottom: 28px;
 }
+
+h1 {
+  margin-bottom: 40px;
+}
+
+.form-input {
+  padding: 12px 16px;
+  padding-left: 40px;
+  width: 33vw;
+  min-width: 200px;
+  height: 64px;
+  background: var(--black10);
+  border: 1px solid var(--grey700);
+  box-sizing: border-box;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  color: var(--white100);
+}
+
+.form-submit {
+  margin-top: 24px;
+  width: 33vw;
+  height: 56px;
+  min-width: 200px;
+  background: var(--primary400);
+  border: 2px solid var(--primary400);
+  border-radius: 12px;
+  color: var(--white100);
+}
+
+.divider {
+  margin-top: 26px;
+  position: relative;
+}
+
+.left-rectangle {
+  position: absolute;
+  width: 40%;
+  height: 5px;
+  left: 0px;
+  top: 16px;
+  background: var(--grey800);
+  border-radius: 2px;
+}
+
+.right-rectangle {
+  position: absolute;
+  width: 40%;
+  height: 5px;
+  right: 0px;
+  top: 16px;
+  background: var(--grey800);
+  border-radius: 2px;
+}
+
+.google-button {
+  width: 21vw;
+  height: 69px;
+}
+

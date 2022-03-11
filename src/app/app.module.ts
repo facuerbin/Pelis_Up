@@ -10,6 +10,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DetailComponent } from './components/routes/detail/detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DetailComponent } from './components/routes/detail/detail.component';
     FontAwesomeModule,
     RouterModule,
     LayoutModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

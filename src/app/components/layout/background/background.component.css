@@ -11,11 +11,14 @@
 .vector3 {
   position: absolute;
   width: 34%;
-  height: 345px;
+  height: 43vh;
+  left: 8vw;
+  top: 40vh;
+
   left: 124px;
   top: 491px;
 
-  background: var(--secondary800);
+  background: var(--secondary800), url('/assets/background/vector3.svg');
   filter: blur(350px);
 }
 
@@ -43,7 +46,7 @@
 
 .elipse5 {
   position: absolute;
-  width: 28%;
+  width: 28vw;
   height: 266.56px;
   left: 63vw;
   top: 700px;
