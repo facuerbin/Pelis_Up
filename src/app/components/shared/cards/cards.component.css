@@ -39,9 +39,28 @@
   letter-spacing: 0.02em;
 }
 
+.rating-container {
+  position: absolute;
+  height: 32px;
+  left: 16px;
+  top: 16px;
+  padding: 4px 8px;
+  color: #FFAD49;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+}
+
+.star-icon {
+  font-size: 13px;
+}
+
 a,
 a:visited,
-a:hover,
 a:active {
-  color: inherit;
+  color: var(--grey50);
+}
+
+a:hover {
+  color: var(--black50);
 }

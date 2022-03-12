@@ -2,7 +2,13 @@
   class="container d-flex flex-row align-items-center justify-content-center flex-wrap mb-4"
 >
   <div *ngFor="let item of catalog" class="cards col-lg-3 col-md-4 col-12">
-    <a [routerLink]="['/',(item.category === 'Películas'?'peliculas': 'series') , item.id]">
+    <a
+      [routerLink]="[
+        '/',
+        item.category === 'Películas' ? 'peliculas' : 'series',
+        item.id
+      ]"
+    >
       <img
         class="cover-page"
         src="{{
@@ -12,6 +18,14 @@
         }}"
         alt="Imagen de portada"
       />
+      <div class="rating-container body-regular">
+        <fa-icon
+          [icon]="starIcon"
+          class="star-icon"
+          aria-hidden="true"
+        ></fa-icon>
+        {{ item.rating }}
+      </div>
       <p class="title">{{ item.name }}</p>
     </a>
   </div>
