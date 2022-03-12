@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MoviesService } from 'src/app/services/movies/movies.service';
 import { Category, MovieSeries } from 'src/interfaces/movie.series';
-import { MoviesService } from 'src/app/services/movies.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
