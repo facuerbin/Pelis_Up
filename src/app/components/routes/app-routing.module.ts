@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {
@@ -26,10 +27,10 @@ const routes: Routes = [
     path: "", component:HomeComponent
   },
   {
-    path: "*", component:HomeComponent
+    path: "dashboard", component:DashboardComponent
   },
   {
-    path: "dashboard", component:DashboardComponent
+    path: "**", component:ErrorComponent
   }
 ];
 

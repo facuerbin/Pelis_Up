@@ -48,7 +48,7 @@ export class AuthService {
 
     const uid = response?.user?.uid;
     if (uid) this.fetchUserData(uid);
-
+    this.router.navigate(["/dashboard"]);
     return uid ? true : false;
   }
 

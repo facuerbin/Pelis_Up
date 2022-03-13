@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { faArrowRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -17,9 +17,6 @@ export class HeaderComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.isLogged = await this.auth.isLoggedIn();
-    console.log(await this,this.auth.getUser())
-    console.log(this.isLogged)
   }
 
 }

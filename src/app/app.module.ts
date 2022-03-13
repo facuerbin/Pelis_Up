@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { DashboardComponent } from './components/routes/dashboard/dashboard.component';
+import { ErrorComponent } from './components/routes/error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { DashboardComponent } from './components/routes/dashboard/dashboard.comp
     ListComponent,
     LoginComponent,
     DetailComponent,
-    DashboardComponent
+    DashboardComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
