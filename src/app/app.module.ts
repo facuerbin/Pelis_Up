@@ -16,13 +16,15 @@ import config from 'src/config';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { DashboardComponent } from './components/routes/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ListComponent,
     LoginComponent,
-    DetailComponent
+    DetailComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

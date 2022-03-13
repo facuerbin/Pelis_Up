@@ -1,0 +1,17 @@
+.container {
+  margin-top: 160px;
+  margin-bottom: 40vh;
+}
+
+.dashboard-title {
+  margin-bottom: 40px;
+}
+
+.dashboard-box {
+  background: #121829;
+  opacity: 0.8;
+  border-radius: 12px;
+  margin: 0px 12px;
+  flex-grow: 1;
+  height: 152px;
+}
