@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +9,17 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   // Icon
-  arrowRight = faArrowRight;
+  loginIcon = faArrowRight;
+  signOutIcon = faSignOutAlt;
 
-  constructor() { }
+  isLogged = false;
+  constructor(private auth: AuthService) {
+  }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.isLogged = await this.auth.isLoggedIn();
+    console.log(await this,this.auth.getUser())
+    console.log(this.isLogged)
   }
 
 }

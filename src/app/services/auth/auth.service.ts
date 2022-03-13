@@ -9,15 +9,15 @@ import { User } from 'src/interfaces/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  user: Observable<User | undefined>;
-  usuario: User | null = null;
+  user$: Observable<User | undefined>;
+  user: User | null = null;
 
   constructor(
     private fireAuth: AngularFireAuth,
     private fireStore: AngularFirestore,
     private router: Router
   ) {
-    this.user = this.fireAuth.authState.pipe(
+    this.user$ = this.fireAuth.authState.pipe(
       switchMap(user => {
         if (user) {
           return this.fireStore.doc<User>(`users/${user.uid}`).valueChanges();
@@ -32,7 +32,7 @@ export class AuthService {
       .catch(e => console.log("Login error: " + e));
 
     const uid = response?.user?.uid;
-    if (uid) this.getUserData(uid);
+    if (uid) this.fetchUserData(uid);
 
     const user = this.fireAuth.user;
 
@@ -47,9 +47,9 @@ export class AuthService {
       });
 
     const uid = response?.user?.uid;
-    if (uid) this.getUserData(uid);
+    if (uid) this.fetchUserData(uid);
 
-    return uid? true: false;
+    return uid ? true : false;
   }
 
   async signOut() {
@@ -58,24 +58,28 @@ export class AuthService {
     return this.router.navigate(['/']);
   }
 
-  async getUserData(uid: string) {
+  async fetchUserData(uid: string) {
     const data = this.fireStore.doc<User>(`users/${uid}`).get()
       .subscribe(result => {
         if (result.data()) {
           const data = result.data();
-          this.usuario = {
+          this.user = {
             email: data?.email!,
             uid: data?.uid!,
             name: data?.name!,
             photo: data?.photo!
           };
 
-          localStorage.setItem("user", JSON.stringify(this.usuario));
+          localStorage.setItem("user", JSON.stringify(this.user));
         }
         return result;
       });
 
     return data;
+  }
+
+  getUser() {
+    return this.user;
   }
 
   updateUser(user: User | any) {
@@ -91,9 +95,9 @@ export class AuthService {
     return userRef.set(data, { merge: true });
   }
 
-  isLoggedIn() : boolean {
-    return true;
+  async isLoggedIn(): Promise<boolean> {
+    const user = await this.fireAuth.currentUser;
+    console.log(user);
+    return user ? true : false;
   }
-
-
 }

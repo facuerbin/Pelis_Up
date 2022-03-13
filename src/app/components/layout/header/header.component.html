@@ -15,14 +15,25 @@
         <li class="align-items-center">
           <a routerLink="series" routerLinkActive="active" class="link-regular p-2 m-2"> Series </a>
         </li>
-        <li class="align-items-center">
+        <li class="align-items-center" *ngIf="! isLogged">
           <a routerLink="login" routerLinkActive="active" class="link-regular p-2 m-2">
             Ingresar
             <fa-icon
-              [icon]="arrowRight"
+              [icon]="loginIcon"
               class="ml-1"
               aria-hidden="true"
             ></fa-icon>
+          </a>
+        </li>
+
+        <li class="align-items-center" *ngIf="isLogged">
+          <a routerLink="login" routerLinkActive="active" class="link-regular p-2 m-2">
+            <fa-icon
+              [icon]="signOutIcon"
+              class="ml-1"
+              aria-hidden="true"
+            ></fa-icon>
+            Salir
           </a>
         </li>
       </ul>

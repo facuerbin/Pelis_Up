@@ -31,8 +31,22 @@
             class="form-icon"
             aria-hidden="true"
           ></fa-icon>
+
+          <button class="form-icon-right" (click)="togglePassword($event)">
+            <fa-icon
+              *ngIf="!passwordIsVisible"
+              [icon]="eyeIcon"
+              aria-hidden="true"
+            ></fa-icon>
+            <fa-icon
+              *ngIf="passwordIsVisible"
+              [icon]="eyeSlashedIcon"
+              aria-hidden="true"
+            ></fa-icon>
+          </button>
+
           <input
-            type="password"
+            type="{{ ! passwordIsVisible ? 'password' : 'text' }}"
             class="form-input"
             placeholder="Contraseña"
             formControlName="password"
