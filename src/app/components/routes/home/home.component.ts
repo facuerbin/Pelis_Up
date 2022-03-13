@@ -9,20 +9,20 @@ import { Category, MovieSeries } from 'src/interfaces/movie.series';
 export class HomeComponent implements OnInit {
   movies_series: MovieSeries[] | undefined;
   catalog: MovieSeries[] | undefined;
-  movieService = new MoviesService();
 
   filter = 1;
-  activeFilter = [Category.ANY, Category.MOVIE, Category.SERIES];
+  category = Category.ANY;
+  categories = [Category.ANY, Category.MOVIE, Category.SERIES];
 
-  constructor() { }
+  constructor(private movieService: MoviesService) { }
 
   ngOnInit(): void {
-    this.filterCatalog(this.getActiveSection());
+    this.filterCatalog(this.getActiveCategory());
   }
 
-  filterHandler(id: number) {
-    this.filter = id;
-    this.filterCatalog(this.getActiveSection());
+  filterHandler(index: number) {
+    this.setActiveCategory(index);
+    this.filterCatalog(this.getActiveCategory());
   }
 
   async filterCatalog(filter: string) {
@@ -41,15 +41,17 @@ export class HomeComponent implements OnInit {
     return this.catalog = this.movies_series;
   }
 
-  searchCatalog(searchEvent: string): void {
-    this.catalog = this.movies_series?.filter(item => {
-      return item.name?.toLowerCase().includes(searchEvent.toLowerCase()) &&
-        (item.category === this.getActiveSection() || this.getActiveSection() === Category.ANY);
-    });
+  async searchCatalog(searchEvent: string): Promise<void> {
+    this.catalog = await this.movieService.searchContent(searchEvent, this.category);
   }
 
 
-  getActiveSection() {
-    return this.activeFilter[this.filter - 1];
+  getActiveCategory() {
+    return this.category;
+  }
+
+  setActiveCategory(filter: number) {
+    this.filter = filter;
+    this.category = this.categories[filter -1];
   }
 }

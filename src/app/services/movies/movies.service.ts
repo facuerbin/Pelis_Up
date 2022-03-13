@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import config from 'src/config';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { Category, MovieSeries } from 'src/interfaces/movie.series';
 import { Trending } from 'src/interfaces/get.trending.dto';
 import { GetMovies } from 'src/interfaces/get.movies.dto';
@@ -8,6 +8,7 @@ import { GetSeries } from 'src/interfaces/get.series.dto';
 import { GetSeriesDetail } from 'src/interfaces/get.series.detail.dto';
 import { MovieSeriesDetail } from 'src/interfaces/movie.series.details';
 import { GetMovieDetail } from 'src/interfaces/get.movie.detail.dto';
+import { SearchResults } from 'src/interfaces/search.dto';
 
 
 @Injectable({
@@ -118,15 +119,45 @@ export class MoviesService {
     }
   }
 
-  async searchContent(query: string) {
-    const tvSearch = `https://api.themoviedb.org/3/search/tv?api_key=${config.apiKey}&language=${config.apiLanguage}&page=1&query=${query}`;
-    const movieSearch = `https://api.themoviedb.org/3/search/tv?api_key=${config.apiKey}&language=${config.apiLanguage}&page=1&query=${query}`;
+  async searchContent(query: string, category: Category = Category.ANY): Promise<MovieSeries[]> {
+    const tvSearch = (category === Category.ANY || category === Category.SERIES) ? this.searchSeries(query) : null;
+    const movieSearch = (category === Category.ANY || category === Category.MOVIE) ? this.searchMovies(query) : null;
 
-    /*const result = await Promise.all([axios.get(tvSearch), axios.get(movieSearch)] )
+    const promises = [];
+    if (tvSearch) promises.push(tvSearch);
+    if (movieSearch) promises.push(movieSearch);
 
-    console.log(result);
-
+    const data = await Promise.all(promises);
+    console.log(data);
+    const result = data.length > 1 ? [...data[1], ...data[0]]: data[0];
     return result;
-    */
+  }
+
+  async searchSeries(query: string): Promise<MovieSeries[]> {
+    const request: AxiosResponse<SearchResults> = await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${config.apiKey}&language=${config.apiLanguage}&page=1&query=${query}&include_adult=${config.includeAdult}`);
+    return request.data.results.map(item => {
+      return {
+        id: item.id,
+        name: item.name ? item.name : item.original_name,
+        description: item.overview,
+        image: item.poster_path,
+        rating: item.vote_average,
+        category: Category.SERIES
+      };
+    });
+  }
+
+  async searchMovies(query: string): Promise<MovieSeries[]> {
+    const request: AxiosResponse<SearchResults> = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${config.apiKey}&language=${config.apiLanguage}&page=1&query=${query}&include_adult=${config.includeAdult}`);
+    return request.data.results.map(item => {
+      return {
+        id: item.id,
+        name: item.title,
+        description: item.overview,
+        image: item.poster_path,
+        rating: item.vote_average,
+        category: Category.MOVIE
+      };
+    });
   }
 }
