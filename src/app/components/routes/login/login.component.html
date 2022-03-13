@@ -45,6 +45,7 @@
           type="submit"
           [disabled]="loginForm.invalid"
           class="form-submit"
+          value="Ingresar"
         />
       </form>
 
@@ -55,7 +56,7 @@
       </div>
 
       <div class="text-center">
-        <button class="google-button">Ingresar con Google</button>
+        <button class="google-button" (click)="handleGoogleLogin()"></button>
       </div>
     </div>
   </div>

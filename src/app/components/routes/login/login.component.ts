@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faKey } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,16 +17,10 @@ export class LoginComponent implements OnInit {
   envelopeIcon = faEnvelope;
   keyIcon = faKey;
 
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.loginForm.valueChanges.subscribe((result) => {
-      console.log(result);
-      console.log(this.loginForm.controls["email"].errors)
-      console.log(this.loginForm.controls["password"].errors)
 
-    })
   }
 
   isValid(field: string): boolean {
@@ -33,9 +28,15 @@ export class LoginComponent implements OnInit {
     (this.loginForm.controls[field].touched || this.loginForm.controls[field].dirty);
   }
 
-  handleLogin() {
-    console.log("Handle login")
+  async handleLogin() {
+    const email = this.loginForm.controls["email"].value;
+    const password = this.loginForm.controls["password"].value;
+    const credentials = await this.auth.processLogin(email, password);
+    return credentials
+  }
 
+  handleGoogleLogin() {
+    this.auth.processGoogleLogin();
   }
 
 }

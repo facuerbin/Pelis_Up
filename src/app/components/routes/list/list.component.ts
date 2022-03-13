@@ -44,6 +44,7 @@ export class ListComponent implements OnInit {
   }
 
   searchCatalog(searchEvent: string): void {
+    //this.catalog = this.movieService.searchContent(searchEvent);
     this.catalog = this.movie_series?.filter(item => {
       return item.name?.toLowerCase().includes(searchEvent.toLowerCase());
     });

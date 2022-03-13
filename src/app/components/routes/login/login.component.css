@@ -85,5 +85,10 @@ h1 {
 .google-button {
   width: 21vw;
   height: 69px;
+  background-color: transparent;
+  border: none;
+  background-image: url('./../../../../assets/google_signin_buttons/web/2x/btn_google_signin_dark_normal_web@2x.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 

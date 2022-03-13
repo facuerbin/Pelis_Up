@@ -117,4 +117,16 @@ export class MoviesService {
       genres: result.genres.map(genre => genre.name)
     }
   }
+
+  async searchContent(query: string) {
+    const tvSearch = `https://api.themoviedb.org/3/search/tv?api_key=${config.apiKey}&language=${config.apiLanguage}&page=1&query=${query}`;
+    const movieSearch = `https://api.themoviedb.org/3/search/tv?api_key=${config.apiKey}&language=${config.apiLanguage}&page=1&query=${query}`;
+
+    /*const result = await Promise.all([axios.get(tvSearch), axios.get(movieSearch)] )
+
+    console.log(result);
+
+    return result;
+    */
+  }
 }
