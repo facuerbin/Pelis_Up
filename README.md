@@ -166,3 +166,7 @@ Terminar login de la aplicación del diseño presentado en [Figma](https://www.f
 - Implementar registro de datos en Firebase.
 - Guardar datos del usuario logueado en LocalStorage.
 
+Tener en cuenta: las credenciales para el usuario de prueba son,
+     - Email: user@mail.com
+     - Password: user1234
+Al loquearse con este usuario se podrá observar que sus datos serán cargados en localStorage.

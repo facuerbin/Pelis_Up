@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
     email: ["", [Validators.required, Validators.email]],
     password: ["", [Validators.required, Validators.minLength(8)]]
   });
-  passwordIsVisible = false;
 
+  passwordIsVisible = false;
   envelopeIcon = faEnvelope;
   keyIcon = faKey;
   eyeIcon = faEye;

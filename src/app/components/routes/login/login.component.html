@@ -32,6 +32,16 @@
             aria-hidden="true"
           ></fa-icon>
 
+          <input
+            type="{{ !passwordIsVisible ? 'password' : 'text' }}"
+            class="form-input"
+            placeholder="Contraseña"
+            formControlName="password"
+          />
+          <p *ngIf="isValid('password')" class="form-error">
+            La contraseña debe tener al menos 8 caracteres
+          </p>
+
           <button class="form-icon-right" (click)="togglePassword($event)">
             <fa-icon
               *ngIf="!passwordIsVisible"
@@ -44,16 +54,6 @@
               aria-hidden="true"
             ></fa-icon>
           </button>
-
-          <input
-            type="{{ ! passwordIsVisible ? 'password' : 'text' }}"
-            class="form-input"
-            placeholder="Contraseña"
-            formControlName="password"
-          />
-          <p *ngIf="isValid('password')" class="form-error">
-            La contraseña debe tener al menos 8 caracteres
-          </p>
         </div>
         <input
           type="submit"
