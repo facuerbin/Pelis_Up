@@ -9,7 +9,7 @@ export interface Trending {
   vote_count:        number;
   genre_ids:         number[];
   video?:            boolean;
-  original_language: OriginalLanguage;
+  original_language: string;
   original_title?:   string;
   poster_path:       string;
   popularity:        number;
@@ -23,10 +23,4 @@ export interface Trending {
 export enum MediaType {
   Movie = "movie",
   Tv = "tv",
-}
-
-export enum OriginalLanguage {
-  En = "en",
-  Ja = "ja",
-  Ko = "ko",
 }

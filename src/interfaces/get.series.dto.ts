@@ -11,25 +11,12 @@ export interface Result {
   genre_ids:         number[];
   id:                number;
   name:              string;
-  origin_country:    OriginCountry[];
-  original_language: OriginalLanguage;
+  origin_country:    string[];
+  original_language: string;
   original_name:     string;
   overview:          string;
   popularity:        number;
   poster_path:       string;
   vote_average:      number;
   vote_count:        number;
-}
-
-export enum OriginCountry {
-  Co = "CO",
-  GB = "GB",
-  Kr = "KR",
-  Us = "US",
-}
-
-export enum OriginalLanguage {
-  En = "en",
-  Es = "es",
-  Ko = "ko",
 }

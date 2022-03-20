@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MoviesService } from 'src/app/services/movies/movies.service';
 import { Category, MovieSeries } from 'src/interfaces/movie.series';
-import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-list',
@@ -10,12 +10,12 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class ListComponent implements OnInit {
   category = Category.ANY;
-  catalog: MovieSeries[] | undefined;
-  movie_series: MovieSeries[] | undefined;
-  movieService = new MoviesService();
+  catalog: MovieSeries[] = [];
+  movie_series: MovieSeries[] = [];
 
   constructor(
     private route: Router,
+    private movieService: MoviesService
   ) { }
 
   ngOnInit(): void {
@@ -23,11 +23,11 @@ export class ListComponent implements OnInit {
       Category.SERIES :
       Category.MOVIE;
 
-    this.filterCatalog(this.category).then( result => this.catalog = result);
+    this.filterCatalog(this.category).then(result => this.catalog = result || []);
   }
 
   async filterCatalog(filter: Category) {
-    let catalog: MovieSeries[] | undefined;
+    let catalog: MovieSeries[] = [];
 
     switch (filter) {
       case Category.MOVIE:
@@ -43,9 +43,7 @@ export class ListComponent implements OnInit {
     return catalog;
   }
 
-  searchCatalog(searchEvent: string): void {
-    this.catalog = this.movie_series?.filter(item => {
-      return item.name?.toLowerCase().includes(searchEvent.toLowerCase());
-    });
+  async searchCatalog(searchEvent: string): Promise<void> {
+    this.catalog = await this.movieService.searchContent(searchEvent, this.category);
   }
 }

@@ -1,0 +1,41 @@
+.container {
+  margin-top: 120px;
+}
+
+img {
+  width: 400px;
+  height: 320px;
+  margin-bottom: 40px;
+}
+
+p {
+  width: 588px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.link-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 32px;
+  width: 150px;
+  height: 56px;
+  background: var(--primary400);
+  border: 2px solid var(--primary400);
+  border-radius: 12px;
+  margin: 0px 0px;
+  color: var(--white100);
+  text-decoration: none;
+}
+
+a:hover,
+a:visited,
+a:hover {
+  color: var(--white100);
+}
+
+a:hover {
+  background-color: var(--primary600);
+}
