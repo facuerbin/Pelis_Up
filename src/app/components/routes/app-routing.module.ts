@@ -6,6 +6,7 @@ import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorComponent } from './error/error.component';
+import { AddComponent } from './add/add.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,9 @@ const routes: Routes = [
   },
   {
     path: "dashboard", component:DashboardComponent
+  },
+  {
+    path: "dashboard/add", component:AddComponent
   },
   {
     path: "**", component:ErrorComponent

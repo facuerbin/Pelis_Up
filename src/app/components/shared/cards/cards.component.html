@@ -27,6 +27,17 @@
         {{ item.rating }}
       </div>
       <p class="title">{{ item.name }}</p>
+      <a
+        [routerLink]="[
+          '/dashboard/add',
+          item.category === 'Películas' ? 'peliculas' : 'series',
+          item.id
+        ]"
+        class="link-regular add-button"
+        *ngIf="isLoggedRoute"
+        ><fa-icon [icon]="plusIcon" class="" aria-hidden="true"></fa-icon>
+        Añadir a mi lista</a
+      >
     </a>
   </div>
 </section>

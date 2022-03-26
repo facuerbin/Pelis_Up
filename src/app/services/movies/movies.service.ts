@@ -128,7 +128,6 @@ export class MoviesService {
     if (movieSearch) promises.push(movieSearch);
 
     const data = await Promise.all(promises);
-    console.log(data);
     const result = data.length > 1 ? [...data[1], ...data[0]]: data[0];
     return result;
   }

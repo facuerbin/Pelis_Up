@@ -1,0 +1,5 @@
+<div class="container">
+  <h1 class="heading-h1">Agregar nuevo item</h1>
+  <app-search (searchEvent)="searchCatalog($event)"></app-search>
+  <app-cards [catalog]="catalog" [isLoggedRoute]="true" (addItemEvent)="addItem($event)"></app-cards>
+</div>

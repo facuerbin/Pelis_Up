@@ -45,7 +45,7 @@
   left: 16px;
   top: 16px;
   padding: 4px 8px;
-  color: #FFAD49;
+  color: #ffad49;
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(8px);
   border-radius: 8px;
@@ -59,8 +59,18 @@ a,
 a:visited,
 a:active {
   color: var(--grey50);
+  text-decoration: none;
 }
 
 a:hover {
   color: var(--black50);
+}
+
+.add-button {
+  position: absolute;
+  width: 187px;
+  height: 24px;
+  left: 16px;
+  bottom: 24px;
+  color: var(--primary400);
 }

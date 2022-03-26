@@ -2,21 +2,51 @@
   <nav class="navbar p-3">
     <div class="container d-flex align-items-center justify-content-between">
       <a class="logo-container" routerLink="">
-        <img src="./../../../../assets/logo.png" class="logo" alt="Logo del sitio" />
+        <img
+          src="./../../../../assets/logo.png"
+          class="logo"
+          alt="Logo del sitio"
+        />
       </a>
 
-      <ul class="d-flex flex-row align-items-center justify-content-between">
+      <ul
+        class="d-flex flex-row align-items-center justify-content-between"
+        *ngIf="!isLogged"
+      >
         <li class="align-items-center">
-          <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="link-regular p-2 m-2"> Inicio </a>
+          <a
+            routerLink=""
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="link-regular p-2 m-2"
+          >
+            Inicio
+          </a>
         </li>
         <li class="align-items-center">
-          <a routerLink="peliculas" routerLinkActive="active" class="link-regular p-2 m-2"> Peliculas </a>
+          <a
+            routerLink="peliculas"
+            routerLinkActive="active"
+            class="link-regular p-2 m-2"
+          >
+            Peliculas
+          </a>
         </li>
         <li class="align-items-center">
-          <a routerLink="series" routerLinkActive="active" class="link-regular p-2 m-2"> Series </a>
+          <a
+            routerLink="series"
+            routerLinkActive="active"
+            class="link-regular p-2 m-2"
+          >
+            Series
+          </a>
         </li>
-        <li class="align-items-center" *ngIf="! isLogged">
-          <a routerLink="login" routerLinkActive="active" class="link-regular p-2 m-2">
+        <li class="align-items-center">
+          <a
+            routerLink="login"
+            routerLinkActive="active"
+            class="link-regular p-2 m-2"
+          >
             Ingresar
             <fa-icon
               [icon]="loginIcon"
@@ -25,9 +55,38 @@
             ></fa-icon>
           </a>
         </li>
+      </ul>
 
-        <li class="align-items-center" *ngIf="isLogged">
-          <a routerLink="login" routerLinkActive="active" class="link-regular p-2 m-2">
+      <ul
+        class="d-flex flex-row align-items-center justify-content-between"
+        *ngIf="isLogged"
+      >
+        <li class="align-items-center">
+          <a
+            routerLink="dashboard"
+            routerLinkActive="active"
+            class="link-regular p-2 m-2"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            Dashboard
+          </a>
+        </li>
+        <li class="align-items-center">
+          <a
+            routerLink="dashboard/add"
+            routerLinkActive="active"
+            class="link-regular p-2 m-2"
+          >
+            Agregar
+          </a>
+        </li>
+        <li class="align-items-center">
+          <a
+            href=""
+            routerLinkActive="active"
+            class="link-regular p-2 m-2"
+            (click)="signout($event)"
+          >
             <fa-icon
               [icon]="signOutIcon"
               class="ml-1"

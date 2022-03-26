@@ -1,4 +1,5 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { faArrowRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
@@ -12,11 +13,20 @@ export class HeaderComponent implements OnInit {
   loginIcon = faArrowRight;
   signOutIcon = faSignOutAlt;
 
-  isLogged = false;
-  constructor(private auth: AuthService) {
+  isLogged: boolean;
+
+  constructor(private auth: AuthService, private router: Router) {
+    this.isLogged = router.url.includes("dashboard");
   }
 
   async ngOnInit() {
+    this.router.events.subscribe( event => {
+      if (event instanceof NavigationEnd) this.isLogged = event.url.includes("dashboard");
+    })
   }
 
+  signout (event: MouseEvent) {
+    event.preventDefault();
+    this.auth.signOut();
+  }
 }

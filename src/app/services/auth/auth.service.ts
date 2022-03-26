@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { Observable, of, switchMap } from 'rxjs';
+import { MovieSeries } from 'src/interfaces/movie.series';
 import { User } from 'src/interfaces/user.model';
 @Injectable({
   providedIn: 'root'
@@ -67,7 +68,8 @@ export class AuthService {
             email: data?.email!,
             uid: data?.uid!,
             name: data?.name!,
-            photo: data?.photo!
+            photo: data?.photo!,
+            list: data?.list
           };
 
           localStorage.setItem("user", JSON.stringify(this.user));
@@ -97,7 +99,14 @@ export class AuthService {
 
   async isLoggedIn(): Promise<boolean> {
     const user = await this.fireAuth.currentUser;
-    console.log(user);
     return user ? true : false;
+  }
+
+  async addItem(uid: string, movie: MovieSeries): Promise<any> {
+    const userData = JSON.parse(localStorage.getItem("user") || "");
+    if (userData && userData.list) {
+      userData.list.push(movie);
+    }
+    const data = this.fireStore.doc<User>(`users/${uid}`).update({list: userData.list })
   }
 }

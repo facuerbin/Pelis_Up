@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faEnvelope, faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { faKey } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -20,10 +21,10 @@ export class LoginComponent implements OnInit {
   eyeIcon = faEye;
   eyeSlashedIcon = faEyeSlash;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
+    if (localStorage.getItem("user")) this.router.navigate(["/dashboard"])
   }
 
   isValid(field: string): boolean {
