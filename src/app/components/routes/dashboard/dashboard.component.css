@@ -15,3 +15,11 @@
   flex-grow: 1;
   height: 152px;
 }
+
+a,
+a:hover,
+a:visited {
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+}

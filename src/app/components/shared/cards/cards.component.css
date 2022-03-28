@@ -30,7 +30,10 @@
   position: absolute;
   left: 16px;
   top: 400px;
-
+  width: 85%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
@@ -62,15 +65,25 @@ a:active {
   text-decoration: none;
 }
 
-a:hover {
+button {
+  color: var(--grey50);
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+}
+
+button:hover {
   color: var(--black50);
 }
 
 .add-button {
   position: absolute;
-  width: 187px;
   height: 24px;
   left: 16px;
   bottom: 24px;
   color: var(--primary400);
+}
+
+.remove-item {
+  color: var(--error500);
 }

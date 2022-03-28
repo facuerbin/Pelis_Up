@@ -7,8 +7,8 @@ import { Category, MovieSeries } from 'src/interfaces/movie.series';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  movies_series: MovieSeries[] | undefined;
-  catalog: MovieSeries[] | undefined;
+  movies_series: MovieSeries[] = [];
+  catalog: MovieSeries[] = [];
 
   filter = 1;
   category = Category.ANY;

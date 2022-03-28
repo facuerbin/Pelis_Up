@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import axios from 'axios';
 import firebase from 'firebase/compat/app';
-import { Observable, of, switchMap } from 'rxjs';
-import { MovieSeries } from 'src/interfaces/movie.series';
+import { first, Observable, of, switchMap } from 'rxjs';
+import { Category, MovieSeries } from 'src/interfaces/movie.series';
 import { User } from 'src/interfaces/user.model';
+import { MoviesService } from '../movies/movies.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +18,8 @@ export class AuthService {
   constructor(
     private fireAuth: AngularFireAuth,
     private fireStore: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private movieService: MoviesService
   ) {
     this.user$ = this.fireAuth.authState.pipe(
       switchMap(user => {
@@ -33,7 +36,7 @@ export class AuthService {
       .catch(e => console.log("Login error: " + e));
 
     const uid = response?.user?.uid;
-    if (uid) this.fetchUserData(uid);
+    if (uid) await this.fetchUserData(uid);
 
     const user = this.fireAuth.user;
 
@@ -48,7 +51,7 @@ export class AuthService {
       });
 
     const uid = response?.user?.uid;
-    if (uid) this.fetchUserData(uid);
+    if (uid) await this.fetchUserData(uid);
     this.router.navigate(["/dashboard"]);
     return uid ? true : false;
   }
@@ -60,27 +63,37 @@ export class AuthService {
   }
 
   async fetchUserData(uid: string) {
-    const data = this.fireStore.doc<User>(`users/${uid}`).get()
-      .subscribe(result => {
-        if (result.data()) {
-          const data = result.data();
-          this.user = {
-            email: data?.email!,
-            uid: data?.uid!,
-            name: data?.name!,
-            photo: data?.photo!,
-            list: data?.list
-          };
+    return new Promise<User>(resolve => {
+      this.fireStore.doc<User>(`users/${uid}`)
+        .get()
+        .pipe(first())
+        .subscribe(result => {
+          if (result.data()) {
+            const data = result.data();
+            this.user = {
+              email: data?.email!,
+              uid: data?.uid!,
+              name: data?.name!,
+              photo: data?.photo!,
+              list: data?.list || []
+            };
 
-          localStorage.setItem("user", JSON.stringify(this.user));
-        }
-        return result;
-      });
-
-    return data;
+            localStorage.setItem("user", JSON.stringify(this.user));
+            resolve(this.user);
+          }
+        });
+    })
   }
 
   getUser() {
+    this.user$.subscribe(user => {
+      this.user = {
+        uid: user?.uid ? user.uid : "",
+        email: user?.email ? user.email : "",
+        name: user?.name ? user.name : ""
+      }
+    });
+
     return this.user;
   }
 
@@ -102,11 +115,44 @@ export class AuthService {
     return user ? true : false;
   }
 
-  async addItem(uid: string, movie: MovieSeries): Promise<any> {
-    const userData = JSON.parse(localStorage.getItem("user") || "");
-    if (userData && userData.list) {
-      userData.list.push(movie);
+  async addItem(id: number, category: Category): Promise<any> {
+    const item = category === Category.MOVIE ? await this.movieService.getMoviesById(id.toString()) : await this.movieService.getSeriesById(id.toString());
+    const localUser = JSON.parse(localStorage.getItem("user") || "");
+    const userData = await this.fetchUserData(localUser.uid);
+
+    if (userData) {
+      const movieSerie: MovieSeries = {
+        id: item.id,
+        name: item.name,
+        description: item.overview,
+        image: item.poster_path,
+        rating: item.vote_average,
+        category
+      };
+
+      if (userData.list) {
+        let itemIndex: number | null = null;
+        userData.list.forEach((item, index) => {
+          if (item.id === movieSerie.id) {
+            itemIndex = index;
+          }
+        });
+
+        if (itemIndex) userData.list.splice(itemIndex, 1);
+        else userData.list.push(movieSerie)
+      } else {
+        userData.list = [movieSerie];
+      }
     }
-    const data = this.fireStore.doc<User>(`users/${uid}`).update({list: userData.list })
+
+    await this.fireStore.doc<User>(`users/${this.getUser()?.uid}`).update({ list: userData.list })
+  }
+
+  async getItems(uid: string): Promise<User> {
+    return new Promise(resolve => {
+      this.fireStore.doc<User>(`users/${uid}`).get().pipe(first()).subscribe(result => {
+        resolve(result.data() as User);
+      });
+    })
   }
 }

@@ -1,0 +1,16 @@
+<section class="container list-container d-flex mb-4">
+  <div class="mb-4">
+    <h1>{{category}}</h1>
+  </div>
+
+  <app-search (searchEvent)="searchCatalog($event)"></app-search>
+
+  <div class="container d-flex">
+    <h3 >
+      <span class="body-regular">{{ catalog?.length }} items</span>
+    </h3>
+  </div>
+
+</section>
+
+<app-cards [catalog]="catalog" [addedItems]="addedItems" [isLoggedRoute]="true" (addItemEvent)="removeItem($event)"></app-cards>

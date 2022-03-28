@@ -19,6 +19,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { DashboardComponent } from './components/routes/dashboard/dashboard.component';
 import { ErrorComponent } from './components/routes/error/error.component';
 import { AddComponent } from './components/routes/add/add.component';
+import { UserListComponent } from './components/routes/user-list/user-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { AddComponent } from './components/routes/add/add.component';
     DetailComponent,
     DashboardComponent,
     ErrorComponent,
-    AddComponent
+    AddComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

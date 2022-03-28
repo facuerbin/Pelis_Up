@@ -7,6 +7,7 @@ import { DetailComponent } from './detail/detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorComponent } from './error/error.component';
 import { AddComponent } from './add/add.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,12 @@ const routes: Routes = [
   },
   {
     path: "dashboard/add", component:AddComponent
+  },
+  {
+    path: "dashboard/peliculas", component:UserListComponent
+  },
+  {
+    path: "dashboard/series", component:UserListComponent
   },
   {
     path: "**", component:ErrorComponent
