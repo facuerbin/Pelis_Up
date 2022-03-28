@@ -18,7 +18,6 @@ export class CardsComponent implements OnInit {
   plusIcon = faPlus;
   minusIcon = faMinus;
 
-  toggleAddButton = true;
 
 
   constructor(private router: Router) { }
@@ -35,13 +34,19 @@ export class CardsComponent implements OnInit {
     return this.isLoggedRoute;
   }
 
-  handleAddItem(id: number, category: Category) {
-    this.addItemEvent.emit({id, category});
-    this.toggleAddButton = ! this.toggleAddButton;
+  handleAddItem(item: MovieSeries) {
+    this.addItemEvent.emit({id: item.id, category: item.category});
+    let isInList = false;
+    this.addedItems.forEach( (element, index) => {
+      if (element.id === item.id && element.category === item.category) {
+        this.addedItems.splice(index, 1);
+        isInList = true;
+      }
+    });
+    if (! isInList) this.addedItems.push(item);
   }
 
   checkAddedItem(itemId: number, itemCategory: Category) {
-
     return this.addedItems.filter( item => item.id === itemId && item.category === itemCategory).length === 0;
   }
 

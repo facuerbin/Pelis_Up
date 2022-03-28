@@ -25,7 +25,7 @@
     </div>
     <p class="title">{{ item.name }}</p>
     <button
-      (click)="handleAddItem(item.id, item.category)"
+      (click)="handleAddItem(item)"
       class="add-button"
       *ngIf="isLoggedRoute"
     >
